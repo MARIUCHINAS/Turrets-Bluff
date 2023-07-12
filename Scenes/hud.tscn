@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chceaf8tkfpsq"]
 
 [ext_resource type="FontFile" uid="uid://bbpgvbh3ux6wl" path="res://Fonts/Pixellari.ttf" id="1_csxf1"]
-[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_dskq7"]
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_t8sry"]
 
 [sub_resource type="FontVariation" id="FontVariation_nbjf2"]
 base_font = ExtResource("1_csxf1")
@@ -10,7 +10,7 @@ base_font = ExtResource("1_csxf1")
 base_font = ExtResource("1_csxf1")
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_dskq7")
+script = ExtResource("1_t8sry")
 
 [node name="BackGroundColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

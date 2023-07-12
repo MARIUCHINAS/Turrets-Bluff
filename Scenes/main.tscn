@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj07bt7f0m6nk"]
+[gd_scene load_steps=9 format=3 uid="uid://dj07bt7f0m6nk"]
 
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_chxui"]
 [ext_resource type="PackedScene" uid="uid://chceaf8tkfpsq" path="res://Scenes/hud.tscn" id="1_qrnsy"]
+[ext_resource type="PackedScene" uid="uid://cyucld4656fdg" path="res://Scenes/bullet.tscn" id="2_e4ble"]
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="2_hc674"]
 [ext_resource type="PackedScene" uid="uid://d3w4eve4fraue" path="res://Scenes/pad.tscn" id="3_uphjs"]
 [ext_resource type="PackedScene" uid="uid://dd8quu5qpdo0g" path="res://Scenes/player.tscn" id="4_jutrc"]
@@ -22,6 +24,8 @@ tile_size = Vector2i(20, 20)
 sources/0 = SubResource("TileSetAtlasSource_s3pxf")
 
 [node name="Main" type="Node"]
+script = ExtResource("1_chxui")
+BulletScene = ExtResource("2_e4ble")
 
 [node name="HUD" parent="." instance=ExtResource("1_qrnsy")]
 visible = false

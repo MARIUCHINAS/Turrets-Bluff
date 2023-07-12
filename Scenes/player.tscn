@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dd8quu5qpdo0g"]
 
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_6n8qm"]
-[ext_resource type="Script" path="res://Scenes/player.gd" id="1_l3pud"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_pm8kf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqx86"]
 atlas = ExtResource("1_6n8qm")
@@ -43,15 +43,12 @@ hue_variation_min = -0.23
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-script = ExtResource("1_l3pud")
+script = ExtResource("1_pm8kf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-2, 1.5)
 sprite_frames = SubResource("SpriteFrames_vs26y")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(5, 0)
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.4
