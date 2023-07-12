@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+# Ignore files ending with .import
+*.import
