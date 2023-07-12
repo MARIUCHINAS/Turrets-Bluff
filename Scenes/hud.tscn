@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://chceaf8tkfpsq"]
+[gd_scene load_steps=5 format=3 uid="uid://chceaf8tkfpsq"]
 
 [ext_resource type="FontFile" uid="uid://bbpgvbh3ux6wl" path="res://Fonts/Pixellari.ttf" id="1_csxf1"]
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_dskq7"]
 
 [sub_resource type="FontVariation" id="FontVariation_nbjf2"]
 base_font = ExtResource("1_csxf1")
@@ -9,6 +10,7 @@ base_font = ExtResource("1_csxf1")
 base_font = ExtResource("1_csxf1")
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dskq7")
 
 [node name="BackGroundColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -55,3 +57,5 @@ theme_override_colors/font_color = Color(0.956863, 0.945098, 0.733333, 1)
 theme_override_fonts/font = SubResource("FontVariation_1njox")
 theme_override_font_sizes/font_size = 44
 text = "Turrets Bluff"
+
+[connection signal="button_up" from="StartButton" to="." method="_on_start_button_button_up"]
