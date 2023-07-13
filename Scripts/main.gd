@@ -29,3 +29,9 @@ func _on_hud_game_started():
 func _on_pad_area_entered(area):
 	print(area.name)
 	print("pront")
+
+
+func _on_pad_body_entered(body):
+	if body.RealName == "Zombie":
+		body.queue_free()
+		
