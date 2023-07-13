@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var GameInProgress = false
 
+var RealName = "Player"
+
 func _ready():
 	pass
 	

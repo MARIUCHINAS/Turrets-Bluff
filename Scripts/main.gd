@@ -24,3 +24,8 @@ func _process(delta):
 
 func _on_hud_game_started():
 	GameInProgress = true
+
+
+func _on_pad_area_entered(area):
+	print(area.name)
+	print("pront")

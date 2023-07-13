@@ -47,5 +47,6 @@ scale = Vector2(3, 3)
 [node name="Zombie" parent="." instance=ExtResource("7_d2nnh")]
 position = Vector2(624, 608)
 
+[connection signal="area_entered" from="Pad" to="." method="_on_pad_area_entered"]
 [connection signal="game_started" from="HUD" to="." method="_on_hud_game_started"]
 [connection signal="game_started" from="HUD" to="Player" method="_on_hud_game_started"]

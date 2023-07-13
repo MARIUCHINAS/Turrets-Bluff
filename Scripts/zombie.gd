@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var speed = 50
 @export var acceleration = 0.5
 
+var RealName = "Zombie"
+
 func _physics_process(delta):
 	
 	look_at(Vector2(288,288))
@@ -12,8 +14,7 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	
 	if collision:
-		print(collision.get_collider().name)
-		if collision.get_collider().name == "Bullet":
+		if collision.get_collider().RealName == "Bullet":
 			queue_free()
 
 func _ready():
