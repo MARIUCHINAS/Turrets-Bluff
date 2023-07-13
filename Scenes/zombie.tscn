@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvc375x07dbh5"]
+
+[ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_1a5bb"]
+[ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_ru780"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q08nh"]
+atlas = ExtResource("1_1a5bb")
+region = Rect2(0, 63, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct2ja"]
+atlas = ExtResource("1_1a5bb")
+region = Rect2(21, 63, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42okm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q08nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct2ja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qap2i"]
+radius = 11.0454
+
+[node name="Zombie" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_ru780")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_42okm")
+frame_progress = 0.918425
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qap2i")
