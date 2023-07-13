@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv88fc8miphr7"]
+
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="1_juam0"]
+[ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_n2g7n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pbnn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3umq"]
+bg_color = Color(0.854902, 0.298039, 0.243137, 1)
+
+[sub_resource type="Theme" id="Theme_tyg1w"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6pbnn")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_w3umq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yakef"]
+atlas = ExtResource("1_n2g7n")
+region = Rect2(0, 84, 20, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olj6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yakef")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HealthBar" type="ProgressBar"]
+texture_filter = 1
+offset_right = 10.0
+offset_bottom = 63.0
+theme = SubResource("Theme_tyg1w")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_juam0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 31.2113)
+sprite_frames = SubResource("SpriteFrames_olj6x")
