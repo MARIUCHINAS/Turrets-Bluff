@@ -15,6 +15,13 @@ func hide_stuff():
 	
 func show_stuff():
 	$HealthBar.show()
+	
+func show_again():
+	$HealthBar.hide()
+	
+	$BackGroundColorRect.show()
+	$StartButton.show()
+	$GameNameLabel.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -33,6 +33,7 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_chxui")
 BulletScene = ExtResource("2_e4ble")
+ZombieScene = ExtResource("7_d2nnh")
 
 [node name="FloorTileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -50,7 +51,7 @@ scale = Vector2(3, 3)
 
 [node name="HUD" parent="." instance=ExtResource("1_qrnsy")]
 
-[node name="Zombie" parent="." instance=ExtResource("7_d2nnh")]
+[node name="Zombie" parent="." groups=["Zombie"] instance=ExtResource("7_d2nnh")]
 position = Vector2(624, 608)
 
 [node name="ZombieSpawnPath2D" type="Path2D" parent="."]
@@ -58,6 +59,14 @@ curve = SubResource("Curve2D_00yaa")
 
 [node name="ZombieSpawnPathFollow2D" type="PathFollow2D" parent="ZombieSpawnPath2D"]
 
+[node name="HealTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ZombieSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="Pad" to="." method="_on_pad_body_entered"]
 [connection signal="game_started" from="HUD" to="." method="_on_hud_game_started"]
 [connection signal="game_started" from="HUD" to="Player" method="_on_hud_game_started"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
+[connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]
