@@ -17,7 +17,7 @@ func _physics_process(delta):
 	
 		if Input.is_action_just_pressed("shoot"):
 			$ShootAudioStreamPlayer.play()
-			
+
 			$AnimatedSprite2D.animation = "shoot"
 			$GPUParticles2D.emitting = true
 			await get_tree().create_timer(0.2).timeout

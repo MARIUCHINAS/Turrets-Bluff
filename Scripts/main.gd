@@ -64,7 +64,8 @@ func _on_pad_area_entered(area):
 
 func _on_pad_body_entered(body):
 	if body.RealName == "Zombie":
-		body.queue_free()
+		if body:
+			body.queue_free()
 		$HUD.health -= 20
 		print("Heath ", $HUD/HealthBar.value)
 
