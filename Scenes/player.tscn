@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd8quu5qpdo0g"]
+[gd_scene load_steps=8 format=3 uid="uid://dd8quu5qpdo0g"]
 
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_6n8qm"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pm8kf"]
+[ext_resource type="AudioStream" uid="uid://brw70ins18vxu" path="res://Sounds/laserShoot.wav" id="3_uvena"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqx86"]
 atlas = ExtResource("1_6n8qm")
@@ -58,5 +59,8 @@ autostart = true
 position = Vector2(5, 0)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_0lt5b")
+
+[node name="ShootAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uvena")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
