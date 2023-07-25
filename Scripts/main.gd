@@ -5,30 +5,41 @@ var GameInProgress = false
 @export var BulletScene: PackedScene
 @export var ZombieScene: PackedScene
 
+@export var shootCooldown = 0.0
+@export var shootDelay = 0.3
+
 var hardness_mult = 1.0
 
 func _ready():
 	pass
-	
+
+func emmit_player_particles():
+	$Player/GPUParticles2D.emitting = true
+	await get_tree().create_timer(0.2).timeout
+	$Player/GPUParticles2D.emitting = false
 	
 func _process(delta):
 	if GameInProgress:
 		
+		shootCooldown = max(0, shootCooldown - delta)
+		
 		if $HUD.health <= 0:
 			restart_game()
 		
-		if Input.is_action_just_pressed("shoot"):
-			#var mouse_position = get_viewport().get_mouse_position()
-			#var ScareZoneSpawnLocation = mouse_position
-			#var ScareZone = ScareZoneScene.instantiate()
-			#get_tree().get_root().add_child(ScareZone)
-			#ScareZone.position = ScareZoneSpawnLocation
-		
+		if Input.is_action_pressed("shoot") and shootCooldown <= 0:
+			# Perform the shooting action
 			var BulletSpawnLocation = $Player.position
 			var Bullet = BulletScene.instantiate()
 			get_tree().get_root().add_child(Bullet)
 			Bullet.position = BulletSpawnLocation
 			Bullet.look_at(get_viewport().get_mouse_position())
+			
+			$Player/ShootAudioStreamPlayer.play()
+			
+			$Player/AnimatedSprite2D.animation = "shoot"
+			emmit_player_particles()
+			# Reset the cooldown
+			shootCooldown = shootDelay
 
 
 func restart_game():
@@ -49,6 +60,7 @@ func _on_hud_game_started():
 	$HealTimer.start()
 	$ZombieSpawnTimer.start()
 	GameInProgress = true
+	
 
 func spawn_zombie():
 	$ZombieSpawnPath2D/ZombieSpawnPathFollow2D.progress_ratio = randf()
@@ -57,15 +69,12 @@ func spawn_zombie():
 	get_tree().get_root().add_child(Zombie)
 	Zombie.position = ZombieSpawnLocation
 
-func _on_pad_area_entered(area):
-	print(area.name)
-	print("pront")
-
 
 func _on_pad_body_entered(body):
 	if body.RealName == "Zombie":
 		if body:
 			body.queue_free()
+		$Pad/DamagedAudioStreamPlayer.play()
 		$HUD.health -= 20
 		print("Heath ", $HUD/HealthBar.value)
 

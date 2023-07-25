@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvc375x07dbh5"]
+[gd_scene load_steps=8 format=3 uid="uid://cvc375x07dbh5"]
 
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_1a5bb"]
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_ru780"]
@@ -28,6 +28,23 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_qap2i"]
 radius = 11.0454
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mpsxp"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(10, 10, 10)
+initial_velocity_min = 31.58
+initial_velocity_max = 203.29
+angular_velocity_min = -90.94
+angular_velocity_max = 242.52
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 5.0
+color = Color(0.882353, 0.490196, 0.560784, 1)
+turbulence_enabled = true
+
 [node name="Zombie" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(2.5, 2.5)
@@ -39,3 +56,8 @@ frame_progress = 0.082002
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qap2i")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_mpsxp")

@@ -4,6 +4,9 @@ var GameInProgress = false
 
 var RealName = "Player"
 
+var shootCooldown = 0.0
+var shootDelay = 0.3
+
 func _ready():
 	pass
 	
@@ -11,19 +14,12 @@ func _enter_tree():
 	$ShootTimer.start()
 	
 
-func _physics_process(delta):
+func _process(delta):
 	if GameInProgress:
+		
+		shootCooldown = max(0, shootCooldown - delta)
+		
 		look_at(get_global_mouse_position())
-	
-		if Input.is_action_just_pressed("shoot"):
-			$ShootAudioStreamPlayer.play()
-
-			$AnimatedSprite2D.animation = "shoot"
-			$GPUParticles2D.emitting = true
-			await get_tree().create_timer(0.2).timeout
-			$GPUParticles2D.emitting = false
-	
-
 
 
 func _on_shoot_timer_timeout():
