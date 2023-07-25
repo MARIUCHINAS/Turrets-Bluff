@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvc375x07dbh5"]
+[gd_scene load_steps=9 format=3 uid="uid://cvc375x07dbh5"]
 
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_1a5bb"]
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_ru780"]
+[ext_resource type="AudioStream" uid="uid://b8lg582j63kx3" path="res://Sounds/Oof (enhanced).wav" id="3_cawxi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q08nh"]
 atlas = ExtResource("1_1a5bb")
@@ -61,3 +62,6 @@ shape = SubResource("CircleShape2D_qap2i")
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_mpsxp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cawxi")

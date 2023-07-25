@@ -15,6 +15,8 @@ func _physics_process(delta):
 	
 	if collision:
 		if collision.get_collider().RealName == "Bullet":
+			$AudioStreamPlayer.pitch_scale = randf_range(0.80, 1.20)
+			$AudioStreamPlayer.play()
 			$CollisionShape2D.disabled = true
 			$AnimatedSprite2D.hide()
 			$CollisionShape2D.hide()
