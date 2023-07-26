@@ -4,6 +4,8 @@ signal game_started
 
 var health = 100
 
+var firstTime = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HealthBar.hide()
@@ -26,13 +28,16 @@ func show_again():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if !firstTime:
+		$GameNameLabel.text = "You died"
+		$StartButton.text = "Try Again?"
 	
 func _physics_process(delta):
 	pass
 
 
 func _on_start_button_button_up():
+	firstTime = false
 	hide_stuff()
 	show_stuff()
 	emit_signal("game_started")
