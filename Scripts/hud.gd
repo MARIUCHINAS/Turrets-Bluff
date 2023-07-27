@@ -18,11 +18,13 @@ func hide_stuff():
 	$GameNameLabel.hide()
 	
 func show_stuff():
+	$MainMenuAudioStreamPlayer.stop()
 	$HealthBar.show()
 	$WaveCountLabel.show()
 	$WaveCountLabel2.show()
 	
 func show_again():
+	$MainMenuAudioStreamPlayer.play()
 	$HealthBar.hide()
 	$WaveCountLabel.hide()
 	$WaveCountLabel2.hide()
