@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3w4eve4fraue"]
+[gd_scene load_steps=8 format=3 uid="uid://d3w4eve4fraue"]
 
 [ext_resource type="Script" path="res://Scripts/pad.gd" id="1_1x5gt"]
 [ext_resource type="Texture2D" uid="uid://d308p5f4nn0eh" path="res://Art/TurretBluffTileSet.png" id="1_deuvh"]
 [ext_resource type="AudioStream" uid="uid://s7l6bicp6t83" path="res://Sounds/hitHurt.wav" id="3_v7uf8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvshn"]
+atlas = ExtResource("1_deuvh")
+region = Rect2(63, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kx6sh"]
 atlas = ExtResource("1_deuvh")
@@ -12,15 +16,27 @@ region = Rect2(0, 0, 20, 20)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hvshn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx6sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvshn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx6sh")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kx6sh")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"lost",
 "speed": 5.0
 }]
 

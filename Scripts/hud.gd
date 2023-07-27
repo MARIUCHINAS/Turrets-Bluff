@@ -3,6 +3,7 @@ extends CanvasLayer
 signal game_started
 
 var health = 100
+var wave = 0
 
 var firstTime = true
 
@@ -18,9 +19,13 @@ func hide_stuff():
 	
 func show_stuff():
 	$HealthBar.show()
+	$WaveCountLabel.show()
+	$WaveCountLabel2.show()
 	
 func show_again():
 	$HealthBar.hide()
+	$WaveCountLabel.hide()
+	$WaveCountLabel2.hide()
 	
 	$BackGroundColorRect.show()
 	$StartButton.show()
@@ -33,7 +38,7 @@ func _process(delta):
 		$StartButton.text = "Try Again?"
 	
 func _physics_process(delta):
-	pass
+	$WaveCountLabel.text = str(wave)
 
 
 func _on_start_button_button_up():

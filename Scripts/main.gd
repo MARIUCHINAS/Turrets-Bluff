@@ -46,6 +46,7 @@ func restart_game():
 	GameInProgress = false
 	$Player.GameInProgress = false
 	hardness_mult = 1.0
+	$HUD.wave = 0
 	$HealTimer.stop()
 	$ZombieSpawnTimer.stop()
 	$HUD.show_again()
@@ -75,7 +76,9 @@ func _on_pad_body_entered(body):
 		if body:
 			body.queue_free()
 		$Pad/DamagedAudioStreamPlayer.play()
+		$HUD/HealthBar.emmit_damage()
 		$HUD.health -= 20
+		$Pad/AnimatedSprite2D.play("damage")
 		print("Heath ", $HUD/HealthBar.value)
 
 func _on_heal_timer_timeout():
@@ -91,5 +94,6 @@ func _on_heal_timer_timeout():
 func _on_zombie_spawn_timer_timeout():
 	for i in hardness_mult:
 		spawn_zombie()
+	$HUD.wave += 1
 	hardness_mult += 0.5
 	$HealTimer.wait_time = hardness_mult
