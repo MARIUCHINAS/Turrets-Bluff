@@ -49,6 +49,9 @@ func _process(delta):
 	if !firstTime:
 		$GameNameLabel.text = \"You died\"
 		$StartButton.text = \"Try Again?\"
+	if wave == 0:
+		if !$MainMenuAudioStreamPlayer.playing:
+			$MainMenuAudioStreamPlayer.play()
 	
 func _physics_process(delta):
 	$WaveCountLabel.text = str(wave)
