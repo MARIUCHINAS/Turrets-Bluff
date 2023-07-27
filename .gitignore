@@ -3,4 +3,4 @@
 # Ignore files ending with .import
 *.import
 # My custom Ignores
-/Ports
+Ports/
